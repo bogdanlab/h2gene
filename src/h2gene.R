@@ -78,3 +78,29 @@ h2gene_sampling <- function(snp_info, ld, num_samples, L=20){
                 causal_num_estimates=causal_num_estimates,
                 susie_fit=susie_fit))
 }
+
+# h2gene <- function(susie_fit, ld, annot, num_samples=500, L=20){
+#     posterior_samples <- susie_get_posterior_samples(susie_fit, num_samples=num_samples)
+#     annot_list <- col_list[startsWith(col_list, 'ANNOT')]
+    
+#     var_estimates <- matrix(0., nrow=num_samples, ncol=length(annot_list))
+#     ncausal_estimates <- matrix(0., nrow=num_samples, ncol=length(annot_list))
+#     colnames(h2_estimates) <- annot_list
+#     colnames(causal_num_estimates) <- annot_list
+
+#     var_estimates <- as_tibble(var_estimates)
+#     ncausal_estimates <- as_tibble(ncausal_estimates)
+    
+#     for (sample_i in 1 : num_samples){
+#         this_b <- posterior_samples$b[, sample_i]
+#         # for every annotation
+#         for (annot in annot_list){
+#             annot_mask <- snp_info[[annot]]
+#             h2_estimates[[annot]][sample_i] <- this_b[annot_mask] %*% ld[annot_mask, annot_mask] %*% this_b[annot_mask]
+#             causal_num_estimates[[annot]][sample_i] <- sum(this_b[annot_mask] != 0)
+#         }
+#     }
+#     return(list(h2_estimates=h2_estimates,
+#                 causal_num_estimates=causal_num_estimates,
+#                 susie_fit=susie_fit))
+# }
