@@ -23,7 +23,8 @@ def read_plink(path: str):
         f"{path}.bed",
         chunk=pandas_plink.Chunk(nsamples=None, nvariants=1024),
         verbose=False,
-        ref="a0",
+        # ref="a0", this is just to be consistent with legacy version pysnptools,
+        # BETA might be just in opposite direction, this is fine for this application.
     )
 
     dset = xr.Dataset(
@@ -303,6 +304,7 @@ def simulate(
 
     pheno_g = _geno_mult_mat(dset.geno.data, beta)
     pheno_e = np.zeros_like(pheno_g)
+
     for sim_i in range(n_sim):
         this_beta_scale = np.sqrt(h2_total / np.var(pheno_g[:, sim_i]))
         beta[:, sim_i] = beta[:, sim_i] * this_beta_scale
@@ -313,7 +315,6 @@ def simulate(
         )
 
     pheno = pheno_g + pheno_e
-    return beta, pheno_g, pheno
     beta_hat = (
         _geno_mult_mat(
             dset.geno.data,
@@ -324,7 +325,7 @@ def simulate(
     )
     return {
         "beta": beta,
-        "phe": pheno,
+        "pheno": pheno,
         "beta_hat": beta_hat,
         "df_causal_gene": df_causal_gene,
     }
