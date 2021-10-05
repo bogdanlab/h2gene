@@ -119,10 +119,11 @@ def _geno_mult_mat(
             # impute missing genotype
             if impute_geno:
                 _impute_with_mean(geno_chunk, inplace=True)
-            # standardize genotype
+            # center and standardize genotype
             if std_geno:
-                geno_chunk /= np.std(geno_chunk, axis=0)
-
+                geno_chunk = (geno_chunk - np.mean(geno_chunk, axis=0)) / np.std(
+                    geno_chunk, axis=0
+                )
             ret += np.dot(geno_chunk, mat[start:stop, :])
     else:
         # genotype is transposed
@@ -137,7 +138,9 @@ def _geno_mult_mat(
             if impute_geno:
                 _impute_with_mean(geno_chunk, inplace=True)
             if std_geno:
-                geno_chunk /= np.std(geno_chunk, axis=0)
+                geno_chunk = (geno_chunk - np.mean(geno_chunk, axis=0)) / np.std(
+                    geno_chunk, axis=0
+                )
             ret[start:stop, :] = np.dot(geno_chunk.T, mat)
 
     return ret
