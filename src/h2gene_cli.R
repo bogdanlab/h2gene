@@ -2,6 +2,10 @@
 library(optparse)
 library(readr)
 library(dplyr)
+library(RcppCNPy)
+library(susieR)
+library(reticulate)
+np <- import("numpy")
 
 source(here::here("src", "h2gene.R"))
 
