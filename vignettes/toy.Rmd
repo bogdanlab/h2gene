@@ -16,29 +16,28 @@ library(matrixStats)
 set.seed(1)
 n    <- 1000
 p    <- 500
-beta <- rep(0,p)
-beta[c(1,2,300,400)] <- 1
-X   <- matrix(rnorm(n*p),nrow=n,ncol=p)
+beta <- rep(0, p)
+beta[c(1, 2, 300, 400)] <- 1
+X   <- matrix(rnorm(n * p), nrow = n, ncol = p)
 y   <- X %*% beta + rnorm(n)
-susie_fit <- susie(X,y,L=10)
+susie_fit <- susie(X, y, L = 10)
 
 # calculate LD matrix
 ld <- cov(X)
 
 # build annotation matrix
-annot <- matrix(F, nrow=p, ncol=2)
+annot <- matrix(F, nrow = p, ncol = 2)
 colnames(annot) <- c("gene1", "gene2")
 annot[c(1, 2), "gene1"] <- T
 annot[c(300), "gene2"] <- T
 
 # run h2gene
-res <- h2gene(susie_fit, ld=ld, annot=annot)
+res <- h2gene(susie_fit, ld = ld, annot = annot)
 
 # summarize h2gene results
 print("Mean of heritability estimates across posterior samples")
 print(colMeans(res$hsq))
 
-print("Standard deviation of heritability estimates across posterior samples")
+print("Standard deviations")
 print(colSds(res$hsq))
 ```
-
