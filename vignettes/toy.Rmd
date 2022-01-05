@@ -36,8 +36,8 @@ res <- h2gene(susie_fit, ld = ld, annot = annot)
 
 # summarize h2gene results
 print("Mean of heritability estimates across posterior samples")
-print(colMeans(res$hsq))
+print(colMeans(res$hsq) / c(var(y)))
 
 print("Standard deviations")
-print(colSds(res$hsq))
+print(colSds(res$hsq) / c(var(y)))
 ```
