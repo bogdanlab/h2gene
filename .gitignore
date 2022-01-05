@@ -3,3 +3,4 @@ out/
 submitit-logs/
 .ipynb_checkpoints/
 __pycache__/
+.Rproj.user

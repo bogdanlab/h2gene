@@ -1,17 +1,13 @@
-# h2gene
+---
+title: "Toy example"
+output: html_document
+---
 
-h2gene is a method for partitioning gene-level contributions to complex-trait heritability by allele frequency (or any other binary annotations).
-
-Check out the bioRxiv manuscript [Burch, Hou et al. "Partitioning gene-level contributions to complex-trait heritability by allele frequency identifies disease-relevant genes"](https://www.biorxiv.org/content/10.1101/2021.08.17.456722v1).
-
-## Installation
-```R
-# install.packages("remotes")
-remotes::install_github("bogdanlab/h2gene")
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Example usage
-```R
+```{r}
 library(susieR)
 library(h2geneR)
 library(matrixStats)
@@ -46,5 +42,3 @@ print("Standard deviation of heritability estimates across posterior samples")
 print(colSds(res$hsq))
 ```
 
-## Paper experiments
-See `paper/` directory for code to replicate experiment results. 
