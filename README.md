@@ -47,17 +47,5 @@ print("Standard deviations:")
 print(colSds(res$hsq))
 ```
 
-```
-Mean of heritability estimates across posterior samples:
-    gene1     gene2 
-0.4124906 0.1867927 
-
-Standard deviations:
-0.01698157 0.01135150
-```
-
-## A more complicated example
-TODO: Here we show a more challenging example with large uncertainty in causal variant identification.
-
 ## Paper experiments
 See `paper/` directory for code to replicate experiment results. 

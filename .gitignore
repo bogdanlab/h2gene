@@ -1,4 +1,6 @@
-data/
+.Rhistory
+*.npy
+.DS_Store
 out/
 submitit-logs/
 .ipynb_checkpoints/

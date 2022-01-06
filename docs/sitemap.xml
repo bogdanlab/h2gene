@@ -4,15 +4,30 @@
     <loc>/404.html</loc>
   </url>
   <url>
+    <loc>/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>/articles/ld.html</loc>
+  </url>
+  <url>
+    <loc>/articles/toy.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/reference/hello.html</loc>
+    <loc>/reference/h2gene.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/simulate_gwas.html</loc>
+  </url>
+  <url>
+    <loc>/reference/toy.html</loc>
   </url>
 </urlset>

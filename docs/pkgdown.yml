@@ -1,6 +1,8 @@
 pandoc: 2.11.4
 pkgdown: 2.0.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2021-12-21T04:36Z
+articles:
+  ld: ld.html
+  toy: toy.html
+last_built: 2022-01-06T19:19Z
 

@@ -1,3 +1,30 @@
+#' @rdname h2gene
+#'
+#' @title Estimate partitioned gene-level heritability
+#'
+#' @description This function estimate partitioned gene-level heritability
+#'
+#' @param susie_fit A \code{n_indiv} by \code{n_snp} genotype matrix
+#'
+#' @param ld A \code{n_snp} by \code{n_snp} linkage disequilibrium matrix
+#'
+#' @param annot Number of individuals \code{n_indiv} for the LD matrix
+#'
+#' @param n_sample Heritability explained by the genotype
+#' \eqn{\frac{\text{Var}[X\beta]}{\text{Var}[y]}}
+#'
+#' @param beta \code{n_snp} by \code{n_sim} simulated effect sizes
+#'
+#' @return A list with the following elements:
+#'
+#' \item{beta_hat}{Simulated marginal effects
+#'   \code{beta_hat[, i]} corresponds to ith simulation}
+#'
+#' \item{e}{Simulated environmental noise}
+#'
+#' @export
+#'
+
 h2gene <- function(susie_fit, ld, annot, n_sample = 500) {
   # susie_fit: susie fit object
   # ld: LD matrix used as input to fit susie object
