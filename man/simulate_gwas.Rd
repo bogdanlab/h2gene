@@ -4,19 +4,19 @@
 \alias{simulate_gwas}
 \title{Simulate GWAS from either individual level genotype or LD matrix}
 \usage{
-simulate_gwas(ld, n_indiv, hsq, beta)
+simulate_gwas(hsq, beta, XtX = NULL, n_indiv = NULL, X = NULL)
 }
 \arguments{
-\item{ld}{A \code{n_snp} by \code{n_snp} linkage disequilibrium matrix}
-
-\item{n_indiv}{Number of individuals \code{n_indiv} for the LD matrix}
-
 \item{hsq}{Heritability explained by the genotype
 \eqn{\frac{\text{Var}[X\beta]}{\text{Var}[y]}}}
 
 \item{beta}{\code{n_snp} by \code{n_sim} simulated effect sizes}
 
+\item{n_indiv}{Number of individuals \code{n_indiv} for the LD matrix}
+
 \item{X}{A \code{n_indiv} by \code{n_snp} genotype matrix}
+
+\item{ld}{A \code{n_snp} by \code{n_snp} linkage disequilibrium matrix}
 }
 \value{
 A list with the following elements:
@@ -27,15 +27,37 @@ A list with the following elements:
 \item{e}{Simulated environmental noise}
 }
 \description{
-This function simulate GWAS marginal standardized beta
-\eqn{\hat{\beta} = \frac{X^T y}{N}} with genotype \eqn{X} and phenotype
-simulated under the standard linear model \eqn{y = Xb + e}. It supports
-two modes: (1) simulation from the individual level genotype X. (2)
-simulation from the LD matrix \eqn{X^T X}. The second method is not so
-straightforward and warrant some explanations:
-\deqn{\hat{\beta} = \frac{X^T y}{N} = \frac{X^T (X b + e)}{N} =
-\frac{X^T X}{N}b + \frac{X^T e}{N}}
-Therefore, we can simulate \eqn{\hat{\beta}} with a multivariate normal
-distribution with mean \eqn{\frac{X^T X}{N}b} and variance
-\eqn{\frac{1}{N} \frac{X^T X}{N} \sigma_e^2}
+This function simulate GWAS marginal regression coefficients
+and \emph{approximated} standard error with with genotype \eqn{\mathbf{X}}
+and phenotype \eqn{\mathbf{y}} simulated under the standard linear model
+\eqn{\mathbf{y} = \mathbf{X} \mathbf{b} + \mathbf{e}}. It supports
+two modes: (1) simulation from the individual level genotype \eqn{\mathbf{X}}. (2)
+simulation from the moment matrix \code{XtX}: \eqn{\mathbf{X}^T \mathbf{X}}.
+
+In details, we want to obtain
+\eqn{\widehat{b}_j=(\mathbf{X}_j^{\top}\mathbf{X}_j)^{-1}(\mathbf{X}_j^{\top}\mathbf{y})}
+and
+\eqn{\widehat{\text{s.e.}}(\widehat{b}_j) =
+\widehat{\sigma_j^2}(\mathbf{X}_j^{\top}\mathbf{X}_j)^{-1}}.
+
+Variance explained by each SNP is typically assumed to be small. Therefore
+\eqn{\widehat{\sigma_j^2}} can be approximated with
+\eqn{\widehat{\sigma_j^2}=\text{Var}[\mathbf{y}]}. We further consistently
+normalize \eqn{\mathbf{y}} such that \eqn{\text{Var}[\mathbf{y}]=1}.
+\itemize{
+\item With the individual-level data \eqn{\mathbf{X}}, we can calculate
+\eqn{\widehat{b}_j} and \eqn{\widehat{\text{s.e.}}[\widehat{b}_j]} with
+\eqn{(\mathbf{X}_j^{\top}\mathbf{X}_j)^{-1}} and
+\eqn{(\mathbf{X}_j^{\top}\mathbf{y})}.
+\item With the summary statistics data \eqn{\mathbf{X}^T \mathbf{X}}, we have
+\deqn{\widehat{b}_j=
+(\mathbf{X}_j^{\top}\mathbf{X}_j)^{-1}(\mathbf{X}_j^{\top}\mathbf{y})=
+(\mathbf{X}_j^{\top}\mathbf{X}_j)^{-1}[\mathbf{X}_j^{\top}
+(\mathbf{X}\mathbf{b}+\mathbf{e})]
+}
+Therefore, we can simulate \eqn{\widehat{\mathbf{b}}} by first sample from
+a multivariate normal with mean \eqn{\mathbf{X}^\top \mathbf{X} \mathbf{b}}
+and variance \eqn{\mathbf{X}^\top \mathbf{X} \sigma_e^2}, and then multiplied
+by \eqn{(\mathbf{X}_j^{\top}\mathbf{X}_j)^{-1}} to jth entry.
+}
 }

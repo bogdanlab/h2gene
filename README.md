@@ -48,4 +48,5 @@ print(colSds(res$hsq))
 ```
 
 ## Paper experiments
-See `paper/` directory for code to replicate experiment results. 
+See [`paper/`](https://github.com/bogdanlab/h2gene/tree/main/paper) directory 
+for code to replicate experiment results. 

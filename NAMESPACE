@@ -2,3 +2,5 @@
 
 export(h2gene)
 export(simulate_gwas)
+importFrom(matrixStats,colSds)
+importFrom(matrixStats,colVars)

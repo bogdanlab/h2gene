@@ -4,33 +4,29 @@
 #'
 #' @description This function estimate partitioned gene-level heritability
 #'
-#' @param susie_fit A \code{n_indiv} by \code{n_snp} genotype matrix
+#' @param susie_fit susie fit object which is obtained with
+#' \code{\link[susieR]{susie}} or \code{\link[susieR]{susie_suff_stat}}
 #'
-#' @param ld A \code{n_snp} by \code{n_snp} linkage disequilibrium matrix
+#' @param ld A \code{n_snp} by \code{n_snp} linkage disequilibrium matrix which
+#' should match the one used to construct \code{susie_fit}
 #'
-#' @param annot Number of individuals \code{n_indiv} for the LD matrix
+#' @param annot A \code{n_snp} by \code{n_annot} \emph{binary} matrix denoting the
+#   membership for each SNP in each annotation
 #'
-#' @param n_sample Heritability explained by the genotype
-#' \eqn{\frac{\text{Var}[X\beta]}{\text{Var}[y]}}
-#'
-#' @param beta \code{n_snp} by \code{n_sim} simulated effect sizes
+#' @param n_sample Number of posterior samples to simulate for estimation.
+#' Default to 500.
 #'
 #' @return A list with the following elements:
 #'
-#' \item{beta_hat}{Simulated marginal effects
-#'   \code{beta_hat[, i]} corresponds to ith simulation}
+#' \item{hsq}{\code{n_sample} posterior samples of heritability}
 #'
-#' \item{e}{Simulated environmental noise}
+#' \item{ncausal}{\code{n_sample} posterior samples of number of causals}
 #'
 #' @export
 #'
 
 h2gene <- function(susie_fit, ld, annot, n_sample = 500) {
-  # susie_fit: susie fit object
-  # ld: LD matrix used as input to fit susie object
-  # annot: #SNP x #annot binary matrix denoting the
-  #   membership for each SNP in each annotation
-  # n_sample: number of samples to simulate
+  # n_sample:
 
   if (length(susie_fit$pip) != nrow(annot)) {
     stop("Number of SNPs to construct susie fit must be equal to the number of rows in annotation")
