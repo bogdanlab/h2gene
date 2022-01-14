@@ -49,6 +49,12 @@
 #'
 #' @param beta \code{n_snp} by \code{n_sim} simulated effect sizes
 #'
+#' @param normalize whether to normalize the \code{\beta^\top R \beta} by hsq.
+#' Default is TRUE, \code{normalize=FALSE} can be useful one simulate only a
+#' small region, therefore the heritability may not be \code{hsq} for the given
+#' region. In the scenario of \code{normalize=FALSE}, the signal-to-noise ratio
+#' is left for the user to control.
+#'
 #' @return A list with the following elements:
 #'
 #' \item{beta_hat}{Simulated marginal effects
@@ -58,13 +64,16 @@
 #'
 #' @importFrom matrixStats colVars
 #' @importFrom matrixStats colSds
+#' @importFrom MASS mvrnorm
+#'
 #' @export
 #'
 simulate_gwas = function(hsq,
                          beta,
                          XtX = NULL,
                          n_indiv = NULL,
-                         X = NULL) {
+                         X = NULL,
+                         normalize = TRUE) {
   if (is.vector(beta)) {
     beta <- as.matrix(beta, ncol = 1)
   }
@@ -81,11 +90,13 @@ simulate_gwas = function(hsq,
     XtX_diag <- colVars(X) * n_indiv
     g <- X %*% beta
     scale <- sqrt(hsq / colVars(g))
-    g <- sweep(g, 2, scale, "*")
-    beta <- sweep(beta, 2, scale, "*")
+    if (normalize){
+      g <- sweep(g, 2, scale, "*")
+      beta <- sweep(beta, 2, scale, "*")
+    }
     e <- matrix(rnorm(n_indiv * n_snp, sd = sqrt(1 - hsq)),
                 nrow = n_indiv,
-                n_snp = n_snp)
+                ncol = n_snp)
     y <- g + e
     beta_hat <- t(X) %*% y / XtX_diag
     return(list(
@@ -114,11 +125,12 @@ simulate_gwas = function(hsq,
     beta_hat <- matrix(0, nrow = n_snp, ncol = n_sim)
     for (i in 1:n_sim) {
       quad_form <- c(beta[, i] %*% (XtX / n_indiv) %*% beta[, i])
-      beta[, i] <- beta[, i] * sqrt(hsq / quad_form)
+      if (normalize){
+        beta[, i] <- beta[, i] * sqrt(hsq / quad_form)
+      }
       beta_hat[, i] <-
         (XtX %*% beta[, i] + e[, i]) / XtX_diag
     }
-
 
     return(list(
       beta_hat = beta_hat,

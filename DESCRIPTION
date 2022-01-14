@@ -5,6 +5,8 @@ Version: 0.1.0
 Authors@R: c(person("Burch","Kathryn",role="aut"),
              person("Hou","Kangcheng",role=c("aut", "cre"), 
                  email="kangchenghou@gmail.com"),
+             person("Ding","Yi",role=c("aut"), 
+                 email="kangchenghou@gmail.com"),
              person("Pasaniuc", "Bogdan", role="aut"))
 License: MIT
 URL: https://github.com/bogdanlab/h2gene
