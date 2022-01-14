@@ -1,0 +1,17 @@
+citHeader("To cite the h2gene package, please use:")
+
+citEntry(entry = "Article",
+         title = "Partitioning gene-level contributions to complex-trait heritability by allele frequency identifies disease-relevant genes",
+         author = personList(as.person("Kathryn S. Burch"),
+                             as.person("Kangcheng Hou"),
+                             as.person("Yi Ding"),
+                             as.person("Yifei Wang"),
+                             as.person("Steven Gazal"),
+                             as.person("Huwenbo Shi"),
+                             as.person("Bogdan Pasaniuc")),
+         journal = "bioRxiv",
+         year    = "2021",
+         url     = "https://doi.org/10.1101/2021.08.17.456722",
+         textVersion =
+           "Burch, K. S., Hou, K., Ding, Y., Wang, Y., Gazal, S., Shi, H., & Pasaniuc, B. (2021). Partitioning gene-level contributions to complex-trait heritability by allele frequency identifies disease-relevant genes. bioRxiv.
+")
