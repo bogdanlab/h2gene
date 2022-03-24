@@ -2,5 +2,7 @@
 
 export(h2gene)
 export(simulate_gwas)
+importFrom(MASS,mvrnorm)
 importFrom(matrixStats,colSds)
 importFrom(matrixStats,colVars)
+importFrom(susieR,susie_get_posterior_samples)
