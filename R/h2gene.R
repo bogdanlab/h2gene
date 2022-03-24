@@ -22,6 +22,8 @@
 #'
 #' \item{ncausal}{\code{n_sample} posterior samples of number of causals}
 #'
+#' @importFrom susieR susie_get_posterior_samples
+#'
 #' @export
 #'
 

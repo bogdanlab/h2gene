@@ -1,14 +1,20 @@
 Package: h2geneR
 Type: Package
 Title: Gene-level heritability estimation
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person("Burch","Kathryn",role="aut"),
              person("Hou","Kangcheng",role=c("aut", "cre"), 
                  email="kangchenghou@gmail.com"),
              person("Ding","Yi",role=c("aut"), 
                  email="kangchenghou@gmail.com"),
              person("Pasaniuc", "Bogdan", role="aut"))
-License: MIT
+Depends:
+    R (>= 3.5.0)
+Imports:
+    MASS,
+    matrixStats,
+    susieR
+License: MIT + file LICENSE
 URL: https://github.com/bogdanlab/h2gene
 Description: A method for partitioning gene-level contributions to complex-trait 
     heritability by allele frequency (or any other binary annotations)

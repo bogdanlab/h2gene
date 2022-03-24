@@ -4,7 +4,14 @@
 \alias{simulate_gwas}
 \title{Simulate GWAS from either individual level genotype or LD matrix}
 \usage{
-simulate_gwas(hsq, beta, XtX = NULL, n_indiv = NULL, X = NULL)
+simulate_gwas(
+  hsq,
+  beta,
+  XtX = NULL,
+  n_indiv = NULL,
+  X = NULL,
+  normalize = TRUE
+)
 }
 \arguments{
 \item{hsq}{Heritability explained by the genotype
@@ -15,6 +22,12 @@ simulate_gwas(hsq, beta, XtX = NULL, n_indiv = NULL, X = NULL)
 \item{n_indiv}{Number of individuals \code{n_indiv} for the LD matrix}
 
 \item{X}{A \code{n_indiv} by \code{n_snp} genotype matrix}
+
+\item{normalize}{whether to normalize the \code{\beta^\top R \beta} by hsq.
+Default is TRUE, \code{normalize=FALSE} can be useful one simulate only a
+small region, therefore the heritability may not be \code{hsq} for the given
+region. In the scenario of \code{normalize=FALSE}, the signal-to-noise ratio
+is left for the user to control.}
 
 \item{ld}{A \code{n_snp} by \code{n_snp} linkage disequilibrium matrix}
 }
@@ -32,7 +45,8 @@ and \emph{approximated} standard error with with genotype \eqn{\mathbf{X}}
 and phenotype \eqn{\mathbf{y}} simulated under the standard linear model
 \eqn{\mathbf{y} = \mathbf{X} \mathbf{b} + \mathbf{e}}. It supports
 two modes: (1) simulation from the individual level genotype \eqn{\mathbf{X}}. (2)
-simulation from the moment matrix \code{XtX}: \eqn{\mathbf{X}^T \mathbf{X}}.
+simulation from the moment matrix \code{XtX}: \eqn{\mathbf{X}^T \mathbf{X}},
+where \eqn{\mathbf{X}} is already centered.
 
 In details, we want to obtain
 \eqn{\widehat{b}_j=(\mathbf{X}_j^{\top}\mathbf{X}_j)^{-1}(\mathbf{X}_j^{\top}\mathbf{y})}
