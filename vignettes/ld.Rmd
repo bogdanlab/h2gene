@@ -1,6 +1,10 @@
 ---
 title: "Example with large LD"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example with large LD}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
@@ -21,7 +25,7 @@ library(dplyr)
 # ld <- npyLoad("../data/ld.npy")
 # beta <- npyLoad("../data/beta.npy")
 # gene_mask <- as.logical(npyLoad("../data/gene_mask.npy"))
-# save(ld, beta, gene_mask, file="../data/toy.RData")
+# save(ld, beta, gene_mask, file="../data/toy.RData", compress="xz")
 
 data("toy")
 

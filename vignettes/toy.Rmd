@@ -1,6 +1,10 @@
 ---
 title: "Toy example"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Toy example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
@@ -8,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Toy example
-```{r}
+```{r results='hold'}
 library(susieR)
 library(h2geneR)
 library(matrixStats)
