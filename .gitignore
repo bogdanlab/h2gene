@@ -6,3 +6,6 @@ submitit-logs/
 .ipynb_checkpoints/
 __pycache__/
 .Rproj.user
+inst/doc
+*.tar.gz
+h2geneR.Rcheck/

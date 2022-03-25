@@ -1,7 +1,7 @@
 Package: h2geneR
 Type: Package
 Title: Gene-level heritability estimation
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person("Burch","Kathryn",role="aut"),
              person("Hou","Kangcheng",role=c("aut", "cre"), 
                  email="kangchenghou@gmail.com"),
@@ -14,10 +14,19 @@ Imports:
     MASS,
     matrixStats,
     susieR
+Suggests:
+    dplyr,
+    ggplot2,
+    knitr,
+    patchwork,
+    rmarkdown
+SystemRequirements: ImageMagick (to build vignette ld.Rmd)
 License: MIT + file LICENSE
 URL: https://github.com/bogdanlab/h2gene
 Description: A method for partitioning gene-level contributions to complex-trait 
     heritability by allele frequency (or any other binary annotations)
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 RoxygenNote: 7.1.1
+VignetteBuilder: knitr
