@@ -9,4 +9,3 @@ __pycache__/
 inst/doc
 *.tar.gz
 h2geneR.Rcheck/
-*.tsv.gz
