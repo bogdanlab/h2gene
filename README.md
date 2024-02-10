@@ -16,7 +16,8 @@ Estimates of h2gene and MAF-partitioned h2gene for the 17,437 genes and 25 trait
 - `H2GENE_*_SD` are the posterior standard deviations corresponding to each estimand (ALL, RARE, LF, and COMMON)
 - `H2GENE_*_LOWER` and `H2GENE_*_UPPER` are the lower and upper bounds of the 90% credible intervals for each estimand (ALL, RARE, LF, and COMMON)
 - `*_CAUSAL_NUM_MEAN` (and `*_CAUSAL_NUM_SD`) are the expected numbers of causal variants contributing to each h2gene estimate (and corresponding standard deviations)
-- The file names corresponding to each trait are [here](https://github.com/bogdanlab/h2gene/blob/main/paper/file_name_key.tsv).
+
+The file names corresponding to each trait are [here](https://github.com/bogdanlab/h2gene/blob/main/paper/file_name_key.tsv).
   
 Metadata for the genes (chromosome, gene start/stop positions, number of variants in estimand, etc.) are also provided [here](https://github.com/bogdanlab/h2gene/blob/main/paper/gene_meta_data.tsv.gz).
 
