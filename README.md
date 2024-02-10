@@ -1,8 +1,16 @@
 # h2gene
 
-h2gene is a method for partitioning gene-level contributions to complex-trait heritability by allele frequency (or any other binary annotations).
+`h2gene` is a method for partitioning gene-level contributions to complex-trait heritability by allele frequency (or any other binary annotations). It requires variant-level summary association statistics and in-sample LD (that is, LD estimated from a subset of the individuals in the association study).
 
-Check out the bioRxiv manuscript [Burch, Hou et al. "Partitioning gene-level contributions to complex-trait heritability by allele frequency identifies disease-relevant genes"](https://www.biorxiv.org/content/10.1101/2021.08.17.456722v1).
+Details about `h2gene` and our application of the method to 17,437 genes and 25 quantitative traits in the UK Biobank can be found in our paper: 
+
+[Burch, Hou, et al. "Partitioning gene-level contributions to complex-trait heritability by allele frequency identifies disease-relevant genes." _AJHG_ (2022).](https://doi.org/10.1016/j.ajhg.2022.02.012)
+
+
+## h2gene estimates for 17,437 genes and 25 traits available for download
+Estimates of h2gene and MAF-partitioned h2gene for the 17,437 genes and 25 traits analyzed in Burch, Hou, et al. (2022) are available for download [here](https://github.com/bogdanlab/h2gene/tree/main/paper/Burch_Hou_2022_UKB_h2_estimates/). The file names corresponding to each trait are [here](https://github.com/bogdanlab/h2gene/blob/main/paper/Burch_Hou_2022_UKB_h2_estimates/file_name_key.txt).
+
+Metadata for the genes (chromosome, gene start/stop positions, number of variants in estimand, etc.) are also provided [here](https://github.com/bogdanlab/h2gene/blob/main/paper/Burch_Hou_2022_UKB_h2_estimates/gene_meta_data.tsv.gz).
 
 
 ## Installation
@@ -48,5 +56,4 @@ print(colSds(res$hsq))
 ```
 
 ## Paper experiments
-See [`paper/`](https://github.com/bogdanlab/h2gene/tree/main/paper) directory 
-for code to replicate experiment results. 
+See [`paper/`](https://github.com/bogdanlab/h2gene/tree/main/paper) directory for code to replicate experiment results. 
