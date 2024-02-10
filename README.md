@@ -8,9 +8,17 @@ Details about `h2gene` and our application of the method to 17,437 genes and 25 
 
 
 ## h2gene estimates for 17,437 genes and 25 traits available for download
-Estimates of h2gene and MAF-partitioned h2gene for the 17,437 genes and 25 traits analyzed in Burch, Hou, et al. (2022) are available for download [here](https://github.com/bogdanlab/h2gene/tree/main/paper/Burch_Hou_2022_UKB_h2_estimates/). The file names corresponding to each trait are [here](https://github.com/bogdanlab/h2gene/blob/main/paper/Burch_Hou_2022_UKB_h2_estimates/file_name_key.txt).
-
-Metadata for the genes (chromosome, gene start/stop positions, number of variants in estimand, etc.) are also provided [here](https://github.com/bogdanlab/h2gene/blob/main/paper/Burch_Hou_2022_UKB_h2_estimates/gene_meta_data.tsv.gz).
+Estimates of h2gene and MAF-partitioned h2gene for the 17,437 genes and 25 traits analyzed in Burch, Hou, et al. (2022) are available for download [here](https://github.com/bogdanlab/h2gene/tree/main/paper/Burch_Hou_2022_UKB_h2_estimates/).
+- `H2GENE_ALL_MEAN` is the posterior mean of total h2gene
+- `H2GENE_RARE_MEAN` is the posterior mean of the rare variant component of h2gene (0.5% < MAF < 1%)
+- `H2GENE_LF_MEAN` is the posterior mean of the low-frequency variant component of h2gene (1% < MAF < 5%)
+- `H2GENE_COMMON_MEAN` is the posterior mean of the common variant component of h2gene (MAF > 5%)
+- `H2GENE_*_SD` are the posterior standard deviations corresponding to each estimand (ALL, RARE, LF, and COMMON)
+- `H2GENE_*_LOWER` and `H2GENE_*_UPPER` are the lower and upper bounds of the 90% credible intervals for each estimand (ALL, RARE, LF, and COMMON)
+- `*_CAUSAL_NUM_MEAN` (and `*_CAUSAL_NUM_SD`) are the expected numbers of causal variants contributing to each h2gene estimate (and corresponding standard deviations)
+- The file names corresponding to each trait are [here](https://github.com/bogdanlab/h2gene/blob/main/paper/file_name_key.txt).
+  
+Metadata for the genes (chromosome, gene start/stop positions, number of variants in estimand, etc.) are also provided [here](https://github.com/bogdanlab/h2gene/blob/main/paper/gene_meta_data.tsv.gz).
 
 
 ## Installation
