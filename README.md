@@ -8,7 +8,7 @@ Details about `h2gene` and our application of the method to 17,437 genes and 25 
 
 
 ## h2gene estimates for 17,437 genes and 25 traits available for download
-Estimates of h2gene and MAF-partitioned h2gene for the 17,437 genes and 25 traits analyzed in Burch, Hou, et al. (2022) are available for download [here](https://github.com/bogdanlab/h2gene/tree/main/paper/Burch_Hou_2022_UKB_h2_estimates/).
+Estimates of h2gene and MAF-partitioned h2gene for the 17,437 genes and 25 traits analyzed in Burch, Hou, et al. (2022) are available for download [here](https://drive.google.com/file/d/1g6SDg_zIZ6j1q2pziVtB4CCpHYyQAoPn/view?usp=sharing).
 - `H2GENE_ALL_MEAN` is the posterior mean of total h2gene
 - `H2GENE_RARE_MEAN` is the posterior mean of the rare variant component of h2gene (0.5% < MAF < 1%)
 - `H2GENE_LF_MEAN` is the posterior mean of the low-frequency variant component of h2gene (1% < MAF < 5%)
